@@ -1,12 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
-<link>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+     <title>TaskBlitz</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <script src="script.js"></script>
+    <header>
+        <button id="addTodoBtn">Add Todo</button>
+        <div class="dropdown">
+            <button class="dropbtn">Sort By</button>
+            <div class="dropdown-content">
+                <a href="#" id="sortByPriority">Priority</a>
+                <a href="#" id="sortByEndDate">End Date</a>
+            </div>
+        </div>
+    </header>
+
+    <table id="todoTable">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>End Date</th>
+                <th>Status</th>
+                <th>Priority</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="todoList">
+        </tbody>
+    </table>
+
+    <div id="addModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Add Todo</h2>
+            <form id="addTodoForm">
+                <label for="todoName">Name:</label>
+                <input type="text" id="todoName" name="todoName" required>
+                <label for="todoDescription">Description:</label>
+                <input type="text" id="todoDescription" name="todoDescription" required>
+                <label for="todoEndDate">End Date:</label>
+                <input type="date" id="todoEndDate" name="todoEndDate" required>
+                <label for="todoStatus">Status:</label>
+                <select id="todoStatus" name="todoStatus">
+                    <option value="To Do">To Do</option>
+                    <option value="Doing">Doing</option>
+                    <option value="Done">Done</option>
+                </select>
+                <label for="todoPriority">Priority:</label>
+                <select id="todoPriority" name="todoPriority">
+                    <option value="Low">Low</option>
+                    <option value="Medium">Medium</option>
+                    <option value="High">High</option>
+                </select>
+                <button type="submit">Add Todo</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js" defer></script>
 </body>
 </html>
