@@ -9,19 +9,26 @@ document.addEventListener('DOMContentLoaded', function() {
     const todoList = document.getElementById('todoList');
     let todos = [
         {
-          name: "sdf",
-          description: "ewr",
+          name: "Studying",
+          description: "Learn new concepts!",
           endDate: "2024-03-15",
+          status: "To Do",
+          priority: "High"
+        },
+        {
+          name: "Cycling",
+          description: "Exercise is good for health!",
+          endDate: "2024-03-02",
           status: "To Do",
           priority: "Low"
         },
         {
-          name: "sdfhtryhr",
-          description: "jmyuk",
-          endDate: "2024-03-22",
-          status: "To Do",
-          priority: "Low"
-        }
+            name: "Eating",
+            description: "Take food on time!",
+            endDate: "2024-03-22",
+            status: "Doing",
+            priority: "Medium"
+          },
     ];
     renderTodos();
 
