@@ -1,13 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    font-family: Quicksand, sans-serif;
 }
 
 body {
-    font-family: Arial, sans-serif;
     background-color: #f4f4f4;
-    padding: 20px;
+    padding: 24px;
 }
 
 header {
@@ -17,14 +19,10 @@ header {
     margin-bottom: 20px;
 }
 
-#addTodoBtn {
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
+#logo {
+    font-size: 36px;
+    font-weight: 600;
+    user-select: none;
 }
 
 .dropdown {
@@ -32,21 +30,14 @@ header {
     display: inline-block;
 }
 
-.dropbtn {
-    background-color: #007bff;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-}
-
 .dropdown-content {
     display: none;
     position: absolute;
+    margin-left: -60px;
     background-color: #f9f9f9;
+    box-shadow: 0 7px 15px 0 rgba(0, 0, 0, .13), 0 1px 4px 0 rgba(0, 0, 0, .11);
     min-width: 160px;
+    border-radius: 16px;
     z-index: 1;
 }
 
@@ -67,15 +58,28 @@ table {
 }
 
 th {
-    background-color: #007bff;
+    background-color: #555;
     color: #fff;
     text-align: left;
     padding: 10px;
+    text-align: center;
+    user-select: none;
 }
+th:first-child {
+    border-top-left-radius: 9999px;
+    border-bottom-left-radius: 9999px;
+}
+th:last-child {
+    border-top-right-radius: 9999px;
+    border-bottom-right-radius: 9999px;
+}
+
 
 td {
     padding: 10px;
     border-bottom: 1px solid #ddd;
+    text-align: center;
+    font-weight: 500;
 }
 
 .modal {
@@ -93,9 +97,14 @@ td {
 .modal-content {
     background-color: #fefefe;
     margin: 15% auto;
-    padding: 20px;
+    padding: 28px;
     border: 1px solid #888;
     width: 50%;
+    border-radius: 16px;
+}
+
+.modal-content h2 {
+    margin-bottom: 36px;
 }
 
 .close {
@@ -114,6 +123,13 @@ td {
 
 form {
     margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+form label {
+    font-size: 16px;
+    font-weight: 600;
 }
 
 input[type="text"],
@@ -125,6 +141,21 @@ select {
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
+    border-radius: 9999px;
+    padding: 14px 24px;
+    margin: 12px 0 24px 0;
+    font-size: 16px;
+    font-weight: 500;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+#modalControls {
+    margin: 16px 0 8px 0;
+    display: flex;
+    justify-content: flex-end;
+    gap: 16px;
 }
 
 button {
@@ -132,7 +163,30 @@ button {
     color: #fff;
     padding: 10px 20px;
     border: none;
-    border-radius: 5px;
+    border-radius: 9999px;
     cursor: pointer;
     font-size: 16px;
+    transition: all 0.1s ease-out;
+    user-select: none;
+}
+button.deleteBtn {
+    background-color: #e05b32;
+}
+
+button:hover {
+    filter: brightness(1.2);
+}
+button:active {
+    filter: brightness(0.8);
+}
+
+#addTodoBtn {
+    position: fixed;
+    right: 40px;
+    bottom: 40px;
+    width: 48px;
+    height: 48px;
+    font-size: 36px;
+    padding: 0;
+    line-height: 0;
 }
