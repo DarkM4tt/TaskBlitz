@@ -65,4 +65,64 @@ document.addEventListener('DOMContentLoaded', function() {
             todoList.appendChild(tr);
         });
     }
+
+    todoList.addEventListener('click', function(event) {
+        if (event.target.classList.contains('editBtn')) {
+            const index = event.target.getAttribute('data-index');
+            const todoToEdit = todos[index];
+            populateEditModal(todoToEdit, index);
+            openModal();
+        } else if (event.target.classList.contains('deleteBtn')) {
+            const index = event.target.getAttribute('data-index');
+            todos.splice(index, 1);
+            renderTodos();
+        } else if (event.target.classList.contains('completeBtn')) {
+            const index = event.target.getAttribute('data-index');
+            todos[index].status = 'Done';
+            renderTodos();
+        }
+    });
+
+    function populateEditModal(todo, index) {
+        document.getElementById('todoName').value = todo.name;
+        document.getElementById('todoDescription').value = todo.description;
+        document.getElementById('todoEndDate').value = todo.endDate;
+        document.getElementById('todoStatus').value = todo.status;
+        document.getElementById('todoPriority').value = todo.priority;
+
+        const submitBtn = document.querySelector('.submitEditBtn');
+        if (submitBtn) {
+            submitBtn.remove();
+        }
+        
+        const saveChangesBtn = document.createElement('button');
+        saveChangesBtn.textContent = 'Save Changes';
+        saveChangesBtn.classList.add('submitEditBtn');
+        addTodoForm.appendChild(saveChangesBtn);
+
+        saveChangesBtn.addEventListener('click', function() {
+            todos[index].name = document.getElementById('todoName').value;
+            todos[index].description = document.getElementById('todoDescription').value;
+            todos[index].endDate = document.getElementById('todoEndDate').value;
+            todos[index].status = document.getElementById('todoStatus').value;
+            todos[index].priority = document.getElementById('todoPriority').value;
+            renderTodos();
+            closeModal();
+            addTodoForm.reset();
+            saveChangesBtn.remove();
+        });
+    }
+
+    sortByPriority.addEventListener('click', function() {
+        todos.sort((a, b) => {
+            const priorityOrder = { 'Low': 1, 'Medium': 2, 'High': 3 };
+            return priorityOrder[a.priority] - priorityOrder[b.priority];
+        });
+        renderTodos();
+    });
+
+    sortByEndDate.addEventListener('click', function() {
+        todos.sort((a, b) => new Date(a.endDate) - new Date(b.endDate));
+        renderTodos();
+    });
 });
