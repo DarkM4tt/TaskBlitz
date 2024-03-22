@@ -3,10 +3,27 @@ document.addEventListener('DOMContentLoaded', function() {
     const modal = document.getElementById('addModal');
     const closeBtn = document.querySelector('.close');
     const addTodoForm = document.getElementById('addTodoForm');
+    const modalControls = document.getElementById('modalControls');
     const sortByPriority = document.getElementById('sortByPriority');
     const sortByEndDate = document.getElementById('sortByEndDate');
     const todoList = document.getElementById('todoList');
-    let todos = [];
+    let todos = [
+        {
+          name: "sdf",
+          description: "ewr",
+          endDate: "2024-03-15",
+          status: "To Do",
+          priority: "Low"
+        },
+        {
+          name: "sdfhtryhr",
+          description: "jmyuk",
+          endDate: "2024-03-22",
+          status: "To Do",
+          priority: "Low"
+        }
+    ];
+    renderTodos();
 
     function openModal() {
         modal.style.display = 'block';
@@ -98,7 +115,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const saveChangesBtn = document.createElement('button');
         saveChangesBtn.textContent = 'Save Changes';
         saveChangesBtn.classList.add('submitEditBtn');
-        addTodoForm.appendChild(saveChangesBtn);
+        modalControls.appendChild(saveChangesBtn);
 
         saveChangesBtn.addEventListener('click', function() {
             todos[index].name = document.getElementById('todoName').value;
